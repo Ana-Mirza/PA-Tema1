@@ -17,13 +17,13 @@ run-p4:
 	./p4
 
 # Nu uitați să modificați numele surselor și, eventual, ale executabilelor.
-p1: p1.cpp
+p1: feribot.cpp
 	$(CC) -o $@ $^ $(CCFLAGS)
-p2: p2.cpp
+p2: nostory.cpp
 	$(CC) -o $@ $^ $(CCFLAGS)
-p3: p3.cpp
+p3: sushi.cpp
 	$(CC) -o $@ $^ $(CCFLAGS)
-p4: p4.cpp
+p4: semnale.cpp
 	$(CC) -o $@ $^ $(CCFLAGS)
 
 # Vom șterge executabilele.
