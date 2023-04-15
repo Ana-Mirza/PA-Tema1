@@ -57,4 +57,4 @@ I solved this problem by parsing the input string and ignoring all letters diffe
 becuase only they influenced the number of possibilities a string could be formed. When one of those 
 letters was found in the string, I computed the number of times the letter appeared in a row, then found 
 the recurrence for the number of strings possible for a 'u' or 'n' sequence to be dp[i - 1] + dp[i - 2]. 
-In order to fit in time, I used matrix exponentiation, using the procedure presented in lab 4.
+In order to make it faster, I used matrix exponentiation, using the procedure presented in lab 4.
