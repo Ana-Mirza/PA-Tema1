@@ -6,6 +6,7 @@ long long get_sum(vector<long long>& nums, long long mid, long long k) {
     for (int i = 0; i < n; i++) {
         sum += nums[i];
 
+        // sum is too large, start sum for next feribot
         if (sum > mid) {
             k--;
             sum -= nums[i];
@@ -13,26 +14,31 @@ long long get_sum(vector<long long>& nums, long long mid, long long k) {
                 max_sum = sum;
             sum = nums[i];
         }
-        
+
+        // cars cannot be grouped in k groups with sum <= mid
         if (k == 0 && i != n)
             return mid + 1;
     }
+
+    // return biggest sum
     return (max_sum > sum) ? max_sum : sum;
 }
 
 long long splitArray(vector<long long>& nums, long long k) {
     long long n = nums.size();
     long long maxi = 0, sum = 0;
+
+    // compute total sum of cars
     for (int i = 0; i < n; i++) {
         if (nums[i] > maxi)
             maxi = nums[i];
         sum += nums[i];
     }
 
-    // binary search
+    // binary search for smallest cost for all feribots
     long long sol;
     long long l = maxi, r = sum, mid;
-    while(l <= r) {
+    while (l <= r) {
         mid = l + (r - l) / 2;
         long long tmp = get_sum(nums, mid, k);
         if (tmp <= mid) {

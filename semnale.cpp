@@ -53,8 +53,7 @@ int type2(int x, int y) {
     return dp[y][x];
 }
 
-int main()
-{
+int main() {
     freopen("semnale.in", "r", stdin);
 	freopen("semnale.out", "w", stdout);
 
@@ -62,7 +61,7 @@ int main()
 
 	cin >> sig_type >> x >> y;
 
-    switch(sig_type) {
+    switch (sig_type) {
 		case 1:
 			cout << type1(x, y);;
 			break;

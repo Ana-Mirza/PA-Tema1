@@ -1,8 +1,3 @@
-// #include <cstdint>
-// #include <fstream>
-// #include <vector>
-// #include <string>
-// #include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -48,8 +43,8 @@ void power_matrix(uint64_t C[KMAX][KMAX], uint64_t p, uint64_t R[KMAX][KMAX]) {
             p /= 2;                       // C^(p/2) to be computed
         } else {
             // reduce previous case:
-            multiply_matrix(tmp, C, tmp); // tmp = tmp*C
-            --p;                          // C^(p-1) to be computed
+            multiply_matrix(tmp, C, tmp);  // tmp = tmp*C
+            --p;                           // C^(p-1) to be computed
         }
     }
 
@@ -82,7 +77,7 @@ uint64_t SolveTask(string compString) {
         // go to next 'u' or 'n' letter
         if (compString[i] != 'u' && compString[i] != 'n')
             continue;
-        
+
         i++;
         char num[20] = "";
         int index = 0;

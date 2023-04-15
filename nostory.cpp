@@ -1,14 +1,3 @@
-/*
- * Acest schelet citește datele de intrare și scrie răspunsul generat de voi,
- * astfel că e suficient să completați cele două funcții.
- *
- * Scheletul este doar un punct de plecare, îl puteți modifica oricum doriți:
- * puteți schimba parametrii, reordona funcțiile etc.
- */
-
-#include <cstdint>
-#include <fstream>
-#include <vector>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -60,10 +49,13 @@ int64_t SolveTask2(const vector<int>& a, const vector<int>& b, int moves) {
 
     // take first n greatest numbers possible
     for (int64_t i = 0; i < 2 * n; i++) {
+        // found first n biggest numbers possible
         if (cont == n)
             return sum;
+        // index already used
         if (freq[nums[i].index] != 0 && moves == 0)
             continue;
+        // make move
         if (freq[nums[i].index] != 0)
             moves--;
         freq[nums[i].index]++;

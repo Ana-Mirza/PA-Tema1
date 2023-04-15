@@ -44,7 +44,7 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
             grades_sum[j] += g[i][j];
     }
 
-    // populate dp matrix
+    // populate dp matrix and take possible plates twice
     for (int i = 1; i <= 2 * m; i++) {
         for (int cost = 0; cost <= max_cost; cost++) {
             dp[i][cost] = dp[i - 1][cost];
@@ -61,10 +61,11 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 }
 
 int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
-	// TODO solve task 3
+	// task 3
     long max_cost = n * x;
     vector<long> grades_sum(m + 1, 0);
-    vector<vector<vector<long>>> dp(n + 1, vector(2 * (m + 1), vector<long>(max_cost + 1, 0)));
+    vector<vector<vector<long>>> dp(n + 1,
+    vector(2 * (m + 1), vector<long>(max_cost + 1, 0)));
 
     // compute sum of grades
     for (int i = 0; i < n; i++) {
@@ -81,7 +82,8 @@ int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 
                 // check if current plate fits in price range
                 if (cost - p[i % m] >= 0) {
-                    long tmp = dp[count - 1][i - 1][cost - p[i % m]] + grades_sum[i % m];
+                    long tmp = dp[count - 1][i - 1][cost - p[i % m]]
+                               + grades_sum[i % m];
                     dp[count][i][cost] = max(dp[count][i][cost], tmp);
                 }
             }
@@ -115,7 +117,7 @@ int main() {
 		cin >> prices[i];
 	}
 
-	// each friends rankings of sushi types
+	// each friends' rankings of sushi types
 	for(int i = 0; i < n; ++i) {
 		for(int j = 0; j < m; ++j) {
 			cin >> grades[i][j];
