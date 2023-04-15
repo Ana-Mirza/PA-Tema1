@@ -50,5 +50,11 @@ For this task, I computed the individual possibilities on the paper to find the 
 the one written: dp[i][j - 1] + dp[i - 1][j - 1].
 
 ##### Task 2
-For this task, the recurrence found, also through observance, was dp[i][j - 1] + dp[i - 1][j - 1]
-+ dp[i - 2][j - 1].
+For this task, the recurrence found, also through observance, was dp[i][j - 1] + dp[i - 1][j - 1] + dp[i - 2][j - 1].
+
+#### BadGPT
+I solved this problem by parsing the input string and ignoring all letters different from 'u' and 'n' 
+becuase only they influenced the number of possibilities a string could be formed. When one of those 
+letters was found in the string, I computed the number of times the letter appeared in a row, then found 
+the recurrence for the number of strings possible for a 'u' or 'n' sequence to be dp[i - 1] + dp[i - 2]. 
+In order to fit in time, I used matrix exponentiation, using the procedure presented in lab 4.
