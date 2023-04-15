@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
 using namespace std;
 
 long long get_sum(vector<long long>& nums, long long mid, long long k) {
@@ -52,21 +55,21 @@ long long splitArray(vector<long long>& nums, long long k) {
 }
 
 int main() {
-    ifstream fin("feribot.in");
-    ofstream fout("feribot.out");
+    freopen("feribot.in", "r", stdin);
+	freopen("feribot.out", "w", stdout);
 
     long long solution, n, k;
-    vector<long long> vec(n, 0);
+    cin >> n >> k;
 
-    fin >> n >> k;
+    vector<long long> vec(n, 0);
     for (int i = 0; i < n; i++) {
         long x;
-        fin >> x;
+        cin >> x;
         vec.push_back(x);
     }
 
     solution = splitArray(vec, k);
 
-    fout << solution;
+    cout << solution << "\n";
     return 0;
 }
