@@ -62,7 +62,7 @@ int task2(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 
 int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
 	// task 3
-    long max_cost = n * x;
+    long max_cost = n * x, index = 0;
     vector<long> grades_sum(m + 1, 0);
     vector<vector<vector<long>>> dp(n + 1,
     vector(2 * (m + 1), vector<long>(max_cost + 1, 0)));
@@ -76,14 +76,18 @@ int task3(int n, int m, int x, vector <int> &p, vector <vector <int> > &g) {
     // populate dp matrix
     for (int count = 1; count <= n; count++) {
         for (int i = 1; i <= 2 * m; i++) {
+            index++;
             for (int cost = 0; cost <= max_cost; cost++) {
+                if (index == m)
+                    index %= m;
+
                 // don't use current plate
                 dp[count][i][cost] = dp[count][i - 1][cost];
 
                 // check if current plate fits in price range
-                if (cost - p[i % m] >= 0) {
-                    long tmp = dp[count - 1][i - 1][cost - p[i % m]]
-                               + grades_sum[i % m];
+                if (cost >= p[index]) {
+                    long tmp = dp[count - 1][i - 1][cost - p[index]]
+                               + grades_sum[index];
                     dp[count][i][cost] = max(dp[count][i][cost], tmp);
                 }
             }
